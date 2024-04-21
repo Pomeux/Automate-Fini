@@ -1,11 +1,23 @@
 (*Automate Fini*)
 
 type automate={ 
-  entre:string list;
-  sortie:string list;
-  etat:int list
+  alphabet:string list; 
+  etat:int list;
+  initiaux:int list;
+  final:int list;
+  transition:int->(int*string) list
 
 };;
+
+let transitionA=fun q-> 
+  match q with 
+  | 1->[(2,"a")]
+  | 2->[]
+  | 3->[]
+  | 4->[]
+  |_-> [];;
+    
+let ex1={alphabet=["a";"b";"c"];etat=[1;2;3;4];initiaux=[1];final=[4];transition=transitionA}
 
 (*module*)
 
