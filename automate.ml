@@ -21,8 +21,20 @@ let ex1={alphabet=["a";"b";"c"];etat=[1;2;3;4];initiaux=[1];final=[4];transition
 
 let less_first_character=fun s n->String.sub s 1 (n-1);;
 
+let rec one_tour=fun l a->
+  match l with 
+  | []->[]
+  | h::q->(a.transition h )@(one_tour q a);;
 
-  
+let rec enlever_tour=fun s a l->
+  match l with 
+  | []->[]
+  | h::q-> 
+
+
+
+
+
 
 (*module*)
 
