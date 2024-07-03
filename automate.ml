@@ -19,22 +19,20 @@ let transitionA=fun q->
     
 let ex1={alphabet=["a";"b";"c"];etat=[1;2;3;4];initiaux=[1];final=[4];transition=transitionA}
 
-let less_first_character=fun s n->String.sub s 1 (n-1);;
+let less_first_character=fun s n->String.sub s 1 (n-1);; 
 
-let rec one_tour=fun l a->
-  match l with 
+let rec aa=fun liste mot first_character n->
+  match liste with 
   | []->[]
-  | h::q->(a.transition h )@(one_tour q a);;
-
-let rec enlever_tour=fun s a l->
-  match l with 
-  | []->[]
-  | h::q-> 
+  | [(a,"")]::q->(aa q mot first_character n)
+  | [(a,b)]::q->if b=first_character then [(a,(less_first_character mot  n))]::(aa q mot first_character n) else (aa q mot first_character n)
+  | _->[];;
+(*marche pour les e transitions*)
 
 
-
-
-
+(*
+  Fonction qui prend en argument la transition, le motle premier caractère retourne une liste sous la forme de [(etat,mot)] et la longueur du mot
+    mot et first_character chaine de caractère  *)
 
 (*module*)
 
