@@ -11,13 +11,12 @@ type automate={
 
 let transitionA=fun q-> 
   match q with 
-  | 1->[(2,"a")]
-  | 2->[]
-  | 3->[]
-  | 4->[]
+  | 1->[(1,"a");(2,"a")]
+  | 2->[(2,"b")]
+  | 3->[] 
   |_-> [];;
     
-let ex1={alphabet=["a";"b";"c"];etat=[1;2;3;4];initiaux=[1];final=[4];transition=transitionA}
+let ex1={alphabet=["a";"b";"c"];etat=[1;2;3];initiaux=[1];final=[3];transition=transitionA}
 
 let less_first_character=fun s n->String.sub s 1 (n-1);; 
 
@@ -39,6 +38,8 @@ let rec bb=fun automate liste->
   match liste with 
   | (a,b)::q->(aa (automate.transition a) b (get_first_character b ) (String.length b))   @(bb automate liste)
   | _->[];;
+
+
 
 (*module*)
 
