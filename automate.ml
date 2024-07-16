@@ -36,11 +36,22 @@ let rec aa=fun liste mot first_character n->
 
 let rec bb=fun automate liste->
   match liste with 
-  | (a,b)::q->(aa (automate.transition a) b (get_first_character b ) (String.length b))   @(bb automate liste)
+  | (a,b)::q->(aa (automate.transition a) b (get_first_character b ) (String.length b))   @(bb automate q)
   | _->[];;
 
+let rec verifEtatFin=fun liste etat->
+  match liste with 
+  | []->false
+  | h::q when (etat=h)->true
+  | h::q->(verifEtatFin q etat);;
+(*
+  let rec cc=fun automate mot->
+    if (verifEtatFin automate.final mot) then 
+    
+    else *)
 
-
+     
+     
 (*module*)
 
 (*Fonction qui verifie si un mot est compris dans le langage*)
