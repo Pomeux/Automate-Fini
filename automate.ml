@@ -44,6 +44,16 @@ let rec verifEtatFin=fun liste etat->
   | []->false
   | h::q when (etat=h)->true
   | h::q->(verifEtatFin q etat);;
+
+let rec verifFin=fun liste etat mot-> (verifEtatFin liste etat ) && mot="";;
+
+let rec dd=fun listeDebut mot->
+  match listeDebut with
+  | []->[]
+  | h::q->(h,mot)::(dd q mot);;
+
+
+
 (*
   let rec cc=fun automate mot->
     if (verifEtatFin automate.final mot) then 
